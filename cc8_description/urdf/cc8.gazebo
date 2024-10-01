@@ -1,0 +1,221 @@
+<?xml version="1.0" ?>
+<robot name="cc8" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+
+    <xacro:property name="body_color" value="Gazebo/Silver" />
+    
+    <!--xacro:if value="${robot_ns != '' and robot_ns != '/'}">
+      <xacro:property name="link_prefix" value="${robot_ns}/"/>
+    </xacro:if>-->
+
+    <gazebo>
+      <plugin name="control" filename="libgazebo_ros_control.so"/>
+    </gazebo>
+    <gazebo reference="base_link">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+      <gravity>true</gravity>
+    </gazebo>
+
+    <gazebo reference="case_link_L_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="case_link_R_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="rocker_L_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="steering_fork_FL_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_FL_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="bogie_L_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_ML_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="steering_fork_RL_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_RL_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="rocker_R_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="steering_fork_FR_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_FR_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="bogie_R_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_MR_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="steering_fork_RR_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_RR_1">
+      <material>${body_color}</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <!-- rocker differential -->
+    <gazebo>
+      <plugin name="rocker_differential" filename="libleo_gazebo_differential_plugin.so">
+        <jointA>rocker_joint_L</jointA>
+        <jointB>rocker_joint_R</jointB>
+        <forceConstant>1000.0</forceConstant>
+      </plugin>
+    </gazebo>
+
+    <!-- camera -->
+
+    <!--<gazebo reference="${link_prefix}camera_frame">
+      <sensor type="camera" name="leo_camera">
+        <always_on>true</always_on>
+        <update_rate>30.0</update_rate>
+        <visualize>false</visualize> 
+        <camera name="leo_camera">
+          <horizontal_fov>1.9</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.02</near>
+            <far>300</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+          <distortion>
+            <k1>-0.279817</k1>
+            <k2>0.060321</k2>
+            <k3>0.000487</k3>
+            <p1>0.000310</p1>
+            <p2>0.000000</p2>
+            <center>0.5 0.5</center>
+          </distortion>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <robotNamespace>${robot_ns}</robotNamespace>
+          <cameraName>camera</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_optical_frame</frameName>
+          <distortionK1>-0.279817</distortionK1>
+          <distortionK2>0.060321</distortionK2>
+          <distortionK3>0.000487</distortionK3>
+          <distortionT1>0.000310</distortionT1>
+          <distortionT2>0.000000</distortionT2>
+        </plugin>
+      </sensor>
+    </gazebo>
+
+
+    <gazebo reference="${link_prefix}imu_frame">
+      <sensor type="imu" name="leo_imu_sensor">
+        <update_rate>100</update_rate>
+        <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+          <robotNamespace>${robot_ns}</robotNamespace>
+          <topicName>imu/data_raw</topicName>
+          <frameName>${link_prefix}imu_frame</frameName>
+          <updateRateHZ>100.0</updateRateHZ>
+          <gaussianNoise>0.01</gaussianNoise>
+          <initialOrientationAsReference>false</initialOrientationAsReference>
+        </plugin>
+      </sensor>
+    </gazebo>-->
+
+    <!-- ros_control plugin -->
+    <!--<gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>${robot_ns}</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+    </gazebo>-->
+
+    <!--<gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>${robot_ns}</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+    </gazebo>
+
+  </macro:macro>-->
+</robot>

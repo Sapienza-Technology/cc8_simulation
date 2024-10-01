@@ -1,0 +1,545 @@
+<?xml version="1.0" ?>
+<robot name="cc8" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find cc8_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find cc8_description)/urdf/cc8.trans" />
+<xacro:include filename="$(find cc8_description)/urdf/cc8.gazebo" />
+
+  <!--<xacro:macro name="cc8" 
+                params="default_antenna:=true
+                        rockers_fixed:=true
+                        footprint_link:=true
+                        link_prefix:=''
+                        joint_prefix:=''
+                        imu_translation:='0.0628 -0.0314 -0.0393'">
+
+      <xacro:if value="${footprint_link}">-->
+        <link name="base_footprint"/>
+      <!--</xacro:if>-->
+
+      <link name="base_link">
+        <inertial>
+          <origin xyz="0.02032158150481281 -0.004132938366153829 0.07847355896271041" rpy="0 0 0"/>
+          <mass value="31.735326359935303"/>
+          <inertia ixx="1.335922" iyy="2.200752" izz="3.295698" ixy="0.030729" iyz="0.009644" ixz="-0.074555"/>
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="case_link_L_1">
+        <inertial>
+          <origin xyz="-5.76305672645475e-05 -0.018384505977135424 -0.07500000038013135" rpy="0 0 0"/>
+          <mass value="1.1591556289566074"/>
+          <inertia ixx="0.002558" iyy="0.002056" izz="0.001807" ixy="1e-06" iyz="0.0" ixz="-0.0"/>
+        </inertial>
+        <visual>
+          <origin xyz="-0.0 -0.275 -0.15" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/case_link_L_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="-0.0 -0.275 -0.15" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/case_link_L_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="case_link_R_1">
+        <inertial>
+          <origin xyz="5.763056728314002e-05 0.018384505977134258 -0.07500000038013133" rpy="0 0 0"/>
+          <mass value="1.1591556289566074"/>
+          <inertia ixx="0.002558" iyy="0.002056" izz="0.001807" ixy="1e-06" iyz="-0.0" ixz="0.0"/>
+        </inertial>
+        <visual>
+          <origin xyz="0.0 0.275 -0.15" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/case_link_R_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.0 0.275 -0.15" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/case_link_R_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="rocker_L_1">
+        <inertial>
+          <origin xyz="0.2902240049859415 0.0708119772157999 0.021743637980664074" rpy="0 0 0"/>
+          <mass value="2.996960457028018"/>
+          <inertia ixx="0.018192" iyy="0.219444" izz="0.208276" ixy="-0.019888" iyz="-0.003026" ixz="-0.030683"/>
+        </inertial>
+        <visual>
+          <origin xyz="-0.0 -0.2965 -0.075" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/rocker_L_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="-0.0 -0.2965 -0.075" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/rocker_L_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="steering_fork_FL_1">
+        <inertial>
+          <origin xyz="-6.885276269119611e-05 -0.011024168785901178 -0.09406157894668771" rpy="0 0 0"/>
+          <mass value="2.4293480883478487"/>
+          <inertia ixx="0.02426" iyy="0.022285" izz="0.004801" ixy="-1.3e-05" iyz="-0.002519" ixz="-1.5e-05"/>
+        </inertial>
+        <visual>
+          <origin xyz="-0.496003 -0.3905 -0.029299" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/steering_fork_FL_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="-0.496003 -0.3905 -0.029299" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/steering_fork_FL_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="wheel_FL_1">
+        <inertial>
+          <origin xyz="-1.1388936826950413e-07 -0.05426775742438028 4.641033480856649e-07" rpy="0 0 0"/>
+          <mass value="1.1863355806975049"/>
+          <inertia ixx="0.003179" iyy="0.004566" izz="0.003179" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+        <visual>
+          <origin xyz="-0.496003 -0.4495 0.160201" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_FL_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.0 -0.06 0.0" rpy="${pi/2} 0 0"/>
+          <!--<geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_RR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>-->
+          <geometry>
+            <cylinder radius="0.09" length="0.09"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="bogie_L_1">
+        <inertial>
+          <origin xyz="-0.09314608246660502 0.03332407904328044 0.009125614751943794" rpy="0 0 0"/>
+          <mass value="3.563528887834295"/>
+          <inertia ixx="0.058221" iyy="0.208547" izz="0.157317" ixy="-0.002773" iyz="0.001886" ixz="0.081537"/>
+        </inertial>
+        <visual>
+          <origin xyz="0.211097 -0.383131 -0.015175" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/bogie_L_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.211097 -0.383131 -0.015175" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/bogie_L_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="wheel_ML_1">
+        <inertial>
+          <origin xyz="3.282565275457885e-07 -0.0542676471666968 -1.748023029657375e-07" rpy="0 0 0"/>
+          <mass value="1.1863355806975049"/>
+          <inertia ixx="0.003179" iyy="0.004566" izz="0.003179" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+        <visual>
+          <origin xyz="5e-05 -0.504568 0.160663" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_ML_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.0 -0.06 0.0" rpy="${pi/2} 0 0"/>
+          <!--<geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_RR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>-->
+          <geometry>
+            <cylinder radius="0.09" length="0.09"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="steering_fork_RL_1">
+        <inertial>
+          <origin xyz="-6.889446618985051e-05 -0.011024058527650371 -0.09406208347131854" rpy="0 0 0"/>
+          <mass value="2.4293480883478487"/>
+          <inertia ixx="0.02426" iyy="0.022285" izz="0.004801" ixy="-1.3e-05" iyz="-0.002519" ixz="-1.5e-05"/>
+        </inertial>
+        <visual>
+          <origin xyz="0.503097 -0.414731 -0.025175" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/steering_fork_RL_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.503097 -0.414731 -0.025175" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/steering_fork_RL_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="wheel_RL_1">
+        <inertial>
+          <origin xyz="-1.5559286714594833e-07 -0.05426764716612953 -4.0421283015179554e-08" rpy="0 0 0"/>
+          <mass value="1.1863355806975049"/>
+          <inertia ixx="0.003179" iyy="0.004566" izz="0.003179" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+        <visual>
+          <origin xyz="0.503097 -0.473731 0.164325" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_RL_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.0 -0.06 0.0" rpy="${pi/2} 0 0"/>
+          <!--<geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_RR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>-->
+          <geometry>
+            <cylinder radius="0.09" length="0.09"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="rocker_R_1">
+        <inertial>
+          <origin xyz="0.2902238062893875 -0.06841948402815423 0.02174359272823953" rpy="0 0 0"/>
+          <mass value="2.996961698235828"/>
+          <inertia ixx="0.017884" iyy="0.219444" izz="0.207968" ixy="0.018413" iyz="0.002496" ixz="-0.030683"/>
+        </inertial>
+        <visual>
+          <origin xyz="0.0 0.2965 -0.075" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/rocker_R_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.0 0.2965 -0.075" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/rocker_R_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="steering_fork_FR_1">
+        <inertial>
+          <origin xyz="6.885206036416625e-05 0.011024168785899957 -0.09406157894668979" rpy="0 0 0"/>
+          <mass value="2.42934808834785"/>
+          <inertia ixx="0.02426" iyy="0.022285" izz="0.004801" ixy="-1.3e-05" iyz="0.002519" ixz="1.5e-05"/>
+        </inertial>
+        <visual>
+          <origin xyz="-0.496003 0.3905 -0.029299" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/steering_fork_FR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="-0.496003 0.3905 -0.029299" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/steering_fork_FR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="wheel_FR_1">
+        <inertial>
+          <origin xyz="-1.2726399756246565e-07 0.05426787444710596 3.4046564675871416e-07" rpy="0 0 0"/>
+          <mass value="1.1863358649901974"/>
+          <inertia ixx="0.003179" iyy="0.004566" izz="0.003179" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+        </inertial>
+        <visual>
+          <origin xyz="-0.496003 0.4495 0.160201" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_FR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.0 0.06 0.0" rpy="${pi/2} 0 0"/>
+          <!--<geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_RR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>-->
+          <geometry>
+            <cylinder radius="0.09" length="0.09"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="bogie_R_1">
+        <inertial>
+          <origin xyz="-0.09314608227719093 -0.03332407904097906 0.009125614666047022" rpy="0 0 0"/>
+          <mass value="3.563528891417035"/>
+          <inertia ixx="0.058221" iyy="0.208547" izz="0.157317" ixy="0.002773" iyz="-0.001886" ixz="0.081537"/>
+        </inertial>
+        <visual>
+          <origin xyz="0.211097 0.383131 -0.015175" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/bogie_R_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.211097 0.383131 -0.015175" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/bogie_R_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="wheel_MR_1">
+        <inertial>
+          <origin xyz="3.148818914003169e-07 0.05426776418942242 -2.984400040983992e-07" rpy="0 0 0"/>
+          <mass value="1.1863358649901974"/>
+          <inertia ixx="0.003179" iyy="0.004566" izz="0.003179" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+        </inertial>
+        <visual>
+          <origin xyz="5e-05 0.504568 0.160663" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_MR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.0 0.06 0.0" rpy="${pi/2} 0 0"/>
+          <!--<geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_RR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>-->
+          <geometry>
+            <cylinder radius="0.09" length="0.09"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="steering_fork_RR_1">
+        <inertial>
+          <origin xyz="6.881035686501225e-05 0.01102405852764915 -0.09406208347132052" rpy="0 0 0"/>
+          <mass value="2.42934808834785"/>
+          <inertia ixx="0.02426" iyy="0.022285" izz="0.004801" ixy="-1.3e-05" iyz="0.002519" ixz="1.5e-05"/>
+        </inertial>
+        <visual>
+          <origin xyz="0.503097 0.414731 -0.025175" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/steering_fork_RR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.503097 0.414731 -0.025175" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/steering_fork_RR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="wheel_RR_1">
+        <inertial>
+          <origin xyz="-1.6896749654993215e-07 0.05426776418885526 -1.640589839813078e-07" rpy="0 0 0"/>
+          <mass value="1.1863358649901974"/>
+          <inertia ixx="0.003179" iyy="0.004566" izz="0.003179" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+        </inertial>
+        <visual>
+          <origin xyz="0.503097 0.473731 0.164325" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_RR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="silver"/>
+        </visual>
+        <collision>
+          <origin xyz="0.0 0.06 0.0" rpy="${pi/2} 0 0"/>
+          <!--<geometry>
+            <mesh filename="package://cc8_description/meshes/wheel_RR_1.stl" scale="0.001 0.001 0.001"/>
+          </geometry>-->
+          <geometry>
+            <cylinder radius="0.09" length="0.09"/>
+          </geometry>
+        </collision>
+      </link>
+
+      <!--<xacro:if value="${footprint_link}">-->
+        <joint name="base_joint" type="fixed">
+          <origin xyz="0 0 0.25" rpy="0 0 0"/>
+          <parent link="base_footprint"/>
+          <child link="base_link"/>
+        </joint>
+      <!--</xacro:if>-->
+
+      <joint name="fixed_joint_L" type="fixed">
+        <origin xyz="0.0 0.275 0.15" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="case_link_L_1"/>
+      </joint>
+
+      <joint name="fixed_joint_R" type="fixed">
+        <origin xyz="0.0 -0.275 0.15" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="case_link_R_1"/>
+      </joint>
+
+      <joint name="rocker_joint_L" type="continuous">
+        <origin xyz="0.0 0.0215 -0.075" rpy="0 0 0"/>
+        <parent link="case_link_L_1"/>
+        <child link="rocker_L_1"/>
+        <axis xyz="0.0 1.0 -0.0"/>
+        <dynamics friction="1.0" damping="0.9"/>
+      </joint>
+
+      <joint name="steering_FL" type="continuous">
+        <origin xyz="0.496003 0.094 -0.045701" rpy="0 0 0"/>
+        <parent link="rocker_L_1"/>
+        <child link="steering_fork_FL_1"/>
+        <axis xyz="0.0 0.0 -1.0"/>
+      </joint>
+
+      <joint name="wheel_joint_FL" type="continuous">
+        <origin xyz="0.0 0.059 -0.1895" rpy="0 0 0"/>
+        <parent link="steering_fork_FL_1"/>
+        <child link="wheel_FL_1"/>
+        <axis xyz="0.0 1.0 -0.0"/>
+      </joint>
+
+      <joint name="bogie_joint_L" type="continuous">
+        <origin xyz="-0.211097 0.086631 -0.059825" rpy="0 0 0"/>
+        <parent link="rocker_L_1"/>
+        <child link="bogie_L_1"/>
+        <axis xyz="-0.0 -1.0 0.0"/>
+      </joint>
+
+      <joint name="wheel_joint_ML" type="continuous">
+        <origin xyz="0.211047 0.121437 -0.175838" rpy="0 0 0"/>
+        <parent link="bogie_L_1"/>
+        <child link="wheel_ML_1"/>
+        <axis xyz="0.0 -1.0 0.0"/>
+      </joint>
+
+      <joint name="steering_RL" type="continuous">
+        <origin xyz="-0.292 0.0316 0.01" rpy="0 0 0"/>
+        <parent link="bogie_L_1"/>
+        <child link="steering_fork_RL_1"/>
+        <axis xyz="0.0 0.0 -1.0"/>
+      </joint>
+
+      <joint name="wheel_joint_RL" type="continuous">
+        <origin xyz="0.0 0.059 -0.1895" rpy="0 0 0"/>
+        <parent link="steering_fork_RL_1"/>
+        <child link="wheel_RL_1"/>
+        <axis xyz="0.0 1.0 -0.0"/>
+      </joint>
+
+      <joint name="rocker_joint_R" type="continuous">
+        <origin xyz="0.0 -0.0215 -0.075" rpy="0 0 0"/>
+        <parent link="case_link_R_1"/>
+        <child link="rocker_R_1"/>
+        <axis xyz="-0.0 -1.0 -0.0"/>
+        <dynamics friction="1.0" damping="0.9"/>
+        <mimic joint="rocker_joint_L"/>
+      </joint>
+
+      <joint name="steering_FR" type="continuous">
+        <origin xyz="0.496003 -0.094 -0.045701" rpy="0 0 0"/>
+        <parent link="rocker_R_1"/>
+        <child link="steering_fork_FR_1"/>
+        <axis xyz="0.0 -0.0 -1.0"/>
+      </joint>
+
+      <joint name="wheel_joint_FR" type="continuous">
+        <origin xyz="0.0 -0.059 -0.1895" rpy="0 0 0"/>
+        <parent link="steering_fork_FR_1"/>
+        <child link="wheel_FR_1"/>
+        <axis xyz="-0.0 -1.0 -0.0"/>
+      </joint>
+
+      <joint name="bogie_joint_R" type="continuous">
+        <origin xyz="-0.211097 -0.086631 -0.059825" rpy="0 0 0"/>
+        <parent link="rocker_R_1"/>
+        <child link="bogie_R_1"/>
+        <axis xyz="-0.0 -1.0 -0.0"/>
+      </joint>
+
+      <joint name="wheel_joint_MR" type="continuous">
+        <origin xyz="0.211047 -0.121437 -0.175838" rpy="0 0 0"/>
+        <parent link="bogie_R_1"/>
+        <child link="wheel_MR_1"/>
+        <axis xyz="-0.0 -1.0 -0.0"/>
+      </joint>
+
+      <joint name="steering_RR" type="continuous">
+        <origin xyz="-0.292 -0.0316 0.01" rpy="0 0 0"/>
+        <parent link="bogie_R_1"/>
+        <child link="steering_fork_RR_1"/>
+        <axis xyz="0.0 -0.0 -1.0"/>
+      </joint>
+
+      <joint name="wheel_joint_RR" type="continuous">
+        <origin xyz="0.0 -0.059 -0.1895" rpy="0 0 0"/>
+        <parent link="steering_fork_RR_1"/>
+        <child link="wheel_RR_1"/>
+        <axis xyz="-0.0 -1.0 -0.0"/>
+      </joint>
+    
+  <!--</xacro:macro>-->
+
+  <!--<xacro:macro name="cc8_sim" 
+               params="default_antenna:=true 
+                       fixed:=false
+                       robot_ns:=''">
+
+    <xacro:property name="link_prefix" value=""/>
+    <xacro:if value="${robot_ns != '' and robot_ns != '/'}">
+      <xacro:property name="link_prefix" value="${robot_ns}/"/>
+    </xacro:if>
+
+    <xacro:cc8 default_antenna="${default_antenna}"
+               rockers_fixed="false"
+               link_prefix="${link_prefix}"/>
+
+    <xacro:cc8_gazebo robot_ns="${robot_ns}"/>
+
+    <xacro:if value="${fixed}">
+      <link name="world"/>
+      <joint name="fixed" type="fixed">
+        <parent link="world"/>
+        <child link="base_footprint"/>
+        <origin xyz="0.0 0.0 0"/>
+      </joint>
+    </xacro:if>
+  
+  </xacro:macro>-->
+
+</robot>

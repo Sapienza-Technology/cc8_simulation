@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find cc8_description)/urdf/cc8.xacro"/>
+  <xacro:include filename="$(find cc8_description)/urdf/zed2.xacro"/>
+
+  <xacro:macro name="cc8_erc" 
+               params="rockers_fixed:=true
+                       link_prefix:=''
+                       joint_prefix:=''">
+
+    <xacro:cc8 default_antenna="false"
+               rockers_fixed="${rockers_fixed}"
+               link_prefix="${link_prefix}"
+               joint_prefix="${joint_prefix}"/>
+
+    <xacro:zed2 link_prefix="${link_prefix}" 
+                joint_prefix="${joint_prefix}"/>
+
+  </xacro:macro>
+
+  <xacro:macro name="cc8_erc_gazebo"
+               params="robot_ns:=''">
+
+    <xacro:property name="link_prefix" value=""/>
+    <xacro:if value="${robot_ns != '' and robot_ns != '/'}">
+      <xacro:property name="link_prefix" value="${robot_ns}/"/>
+    </xacro:if>
+
+    <xacro:leo_gazebo robot_ns="${robot_ns}"/>
+
+    <xacro:zed2_gazebo robot_ns="${robot_ns}"/>
+
+    <gazebo>
+      <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
+        <robotNamespace>${robot_ns}</robotNamespace>
+        <frameName>map</frameName>
+        <bodyName>base_footprint</bodyName>
+        <topicName>ground_truth_raw</topicName>
+        <updateRate>30.0</updateRate>
+      </plugin>
+    </gazebo>
+
+  </xacro:macro>
+
+
+  <xacro:macro name="cc8_erc_sim" 
+               params="fixed:=false
+                       robot_ns:=''">
+
+    <xacro:property name="link_prefix" value=""/>
+    <xacro:if value="${robot_ns != '' and robot_ns != '/'}">
+      <xacro:property name="link_prefix" value="${robot_ns}/"/>
+    </xacro:if>
+
+    <xacro:leo_erc rockers_fixed="false"
+                   link_prefix="${link_prefix}"/>
+
+    <xacro:leo_erc_gazebo robot_ns="${robot_ns}"/>
+
+    <xacro:if value="${fixed}">
+      <link name="world"/>
+      <joint name="fixed" type="fixed">
+        <parent link="world"/>
+        <child link="base_footprint"/>
+        <origin xyz="0.0 0.0 0"/>
+      </joint>
+    </xacro:if>
+  
+  </xacro:macro>
+
+
+<robot/>
