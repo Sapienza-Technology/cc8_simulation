@@ -1,0 +1,13 @@
+<launch>
+
+  <arg name="fixed" default="false"/>
+  <arg name="robot_ns" default="/"/>
+  <arg name="model_name" default="cc8"/>
+
+  <include file="$(find cc8_description)/launch/spawn_model.launch"
+           pass_all_args="true"/>
+
+  <include file="$(find cc8_description)/launch/spawn_controllers.launch" 
+           pass_all_args="true"/>
+
+</launch>

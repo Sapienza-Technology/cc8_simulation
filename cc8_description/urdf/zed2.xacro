@@ -19,12 +19,12 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://leo_erc_description/models/ZED2.dae"/>
+          <mesh filename="package://cc8_description/meshes/ZED2.dae"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://leo_erc_description/models/ZED2.dae"/>
+          <mesh filename="package://cc8_description/meshes/ZED2.dae"/>
         </geometry>
       </collision>
     </link>

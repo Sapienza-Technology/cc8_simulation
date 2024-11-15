@@ -1,0 +1,31 @@
+<launch>
+
+<rosparam file="$(find cc8_description)/config/controller.yaml" 
+          command="load"/>
+
+<node name="controller_spawner" 
+      pkg="controller_manager" 
+      type="spawner" 
+      respawn="false" 
+      output="screen" ns="cc8" 
+      args="steering_FL_position_controller 
+            steering_FR_position_controller 
+            steering_RL_position_controller 
+            steering_RR_position_controller 
+            wheel_joint_FL_position_controller 
+            wheel_joint_FR_position_controller
+            wheel_joint_ML_position_controller 
+            wheel_joint_MR_position_controller
+            wheel_joint_RL_position_controller 
+            wheel_joint_RR_position_controller 
+            joint_state_controller "/>
+
+<node name="robot_state_publisher" 
+      pkg="robot_state_publisher" 
+      type="robot_state_publisher" 
+      respawn="false" 
+      output="screen">
+  <remap from="/joint_states" to="/cc8/joint_states"/>
+</node>
+
+</launch>

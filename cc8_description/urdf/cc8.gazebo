@@ -3,14 +3,13 @@
 
 
     <xacro:property name="body_color" value="Gazebo/Silver" />
-    
-    <!--xacro:if value="${robot_ns != '' and robot_ns != '/'}">
-      <xacro:property name="link_prefix" value="${robot_ns}/"/>
-    </xacro:if>-->
 
     <gazebo>
-      <plugin name="control" filename="libgazebo_ros_control.so"/>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/cc8</robotNamespace>
+      </plugin>
     </gazebo>
+
     <gazebo reference="base_link">
       <material>${body_color}</material>
       <mu1>0.2</mu1>
@@ -201,21 +200,4 @@
         </plugin>
       </sensor>
     </gazebo>-->
-
-    <!-- ros_control plugin -->
-    <!--<gazebo>
-      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-        <robotNamespace>${robot_ns}</robotNamespace>
-        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-      </plugin>
-    </gazebo>-->
-
-    <!--<gazebo>
-      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-        <robotNamespace>${robot_ns}</robotNamespace>
-        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-      </plugin>
-    </gazebo>
-
-  </macro:macro>-->
 </robot>
