@@ -29,7 +29,9 @@ This directory contains all the meshes for the individual links and the stereo c
 - #### Gazebo launch (`cc8_gazebo.launch`):
   ![Gazebo Launch Include Tree](figures/launch_gazebo.png)
   To start the simulation (in a paused state) of the rover within Gazebo in an empty world, the `cc8_gazebo.launch` file must be used. This launch file, in turn, includes two other launch files. The first one launched is `empty_world.launch` (not included in this package but found in `gazebo_ros`), which loads the empty world. The second, `spawn_robot.launch`, loads the rover model into the newly created world.
+  `spawn_robot.launch` itself includes two launch files: `spawn_model.launch`, which loads the URDF model built from `cc8.xacro`, and `spawn_controllers.launch` [(ROS control)](https://classic.gazebosim.org/tutorials?tut=ros_control), which is responsible for loading the controllers needed to operate the four steering joints and the six wheels through the `spawn_controller` node. Additionally, `spawn_controllers.launch` loads the type of controller and the respective PID constants (kp, ki, kd) into the ROS parameter server by reading the `controller.yaml` file located in the `/config` directory.
 
-  `spawn_robot.launch` itself includes two launch files: `spawn_model.launch`, which loads the URDF model built from `cc8.xacro`, and `spawn_controllers.launch`, which is responsible for loading the controllers used to operate the four steering joints and the six wheels. Additionally, `spawn_controllers.launch` loads the type of controller and the respective PID constants (kp, ki, kd) into the ROS parameter server by reading the `controller.yaml` file located in the `/config` directory.
+  `spawn_controllers.launch` also starts the `robot_state_publisher` node, which uses the URDF specified by the `robot_description` parameter and joint positions from the `/cc8/joint_states` topic to calculate the robot's forward kinematics and publish the results via `tf` [(robot_state_publisher)](https://wiki.ros.org/robot_state_publisher).
+
 - #### Display launch (`cc8_display.launch`):
   
