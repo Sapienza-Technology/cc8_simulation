@@ -28,4 +28,6 @@ This directory contains all the meshes for the individual links and the stereo c
 #### `/launch` Directory:
 - #### Gazebo launch (`cc8_gazebo.launch`):
   ![Gazebo Launch Include Tree](figures/launch_gazebo.png)
+  Per poter avviare la simulazione (in pausa) del rover all'interno di Gazebo in un empty world è necessario utilizzare il launch `cc8_gazebo.launch`, questo include a sua  volta altri due launch. Il primo ad essere lanciato è `empty_world.launch` (questo non è presente in questo package ma in gazebo_ros) che andrà a caricare l'empty_world e successivamente il secondo `spawn_robot.launch` caricherà il modello del rover nel mondo appena creato.
+  `spawn_robot.launch` a sua volta include due launch: `spawn_model.launch` che procede a caricare il modello URDF costruito nel file `cc8.xacro` e `spawn_controllers.launch` responsabile del caricamento dei controller utilizzati per azionare i giunti dei quattro sterzi e delle sei ruote.  Oltre a questo `spawn_controllers.launch` carica nel server dei parametri di ros la tipologia di controller e le costanti dei rispettivi PID (kp, ki, kd), caricando il file `controllers.yaml` contenuto nella directory `/config`.  
 - #### Display launch (`cc8_display.launch`):
