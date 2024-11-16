@@ -49,6 +49,8 @@ Questo directory contiene `controller.yaml` in cui sono dichiarati i nomi e i pa
       joint: {nome del giunto come riportato nel file URDF (es. steering_FL)}
       pid: {costanti del controllore PID}
 La tipologia di controllore permette di comandare in diversi modi in nostro giunto:
+![Gazebo PID Controller](figures/controller_PID.png)
+
 
 
 
