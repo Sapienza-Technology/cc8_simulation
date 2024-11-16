@@ -6,4 +6,4 @@ The robot is described using a URDF file (/urdf/cc8.xacro) written in a macro la
 ### CC8 Model (cc8.xacro)
 ![CC8 Model (cc8.xacro)](figures/cc8_visual.png)
 ### CC8 Link Tree URDF
-![CC8 Link Tree URDF](figures/cc8_visual.png)
+![CC8 Link Tree URDF](figures/cc8_link_tree.png)
