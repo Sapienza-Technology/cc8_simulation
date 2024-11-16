@@ -26,6 +26,6 @@ In the hierarchy of links within the model, the initial link must be defined wit
 This directory contains all the meshes for the individual links and the stereo camera. These meshes are referenced in `cc8.xacro`, which provides the overall description of the rover. The formats used are `.stl` and `.dae`, with the latter being particularly useful for importing textures of individual components (e.g., wheel colors, etc.). These meshes are used exclusively for visualizing the components and are not used to determine contact between different links, as this could slow down the simulation. If contacts need to be considered, it is recommended to create meshes with simpler geometries.
 
 #### `/launch` Directory:
-
-
-
+- #### Gazebo launch (`cc8_gazebo.launch`):
+  ![Gazebo Launch Include Tree](figures/launch_gazebo.png)
+- #### Display launch (`cc8_Display.launch`):
