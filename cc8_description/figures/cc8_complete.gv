@@ -1,0 +1,83 @@
+digraph G {
+node [shape=box];
+"base_footprint" [label="base_footprint"];
+"base_link" [label="base_link"];
+"case_link_L_1" [label="case_link_L_1"];
+"rocker_L_1" [label="rocker_L_1"];
+"bogie_L_1" [label="bogie_L_1"];
+"steering_fork_RL_1" [label="steering_fork_RL_1"];
+"wheel_RL_1" [label="wheel_RL_1"];
+"wheel_ML_1" [label="wheel_ML_1"];
+"steering_fork_FL_1" [label="steering_fork_FL_1"];
+"wheel_FL_1" [label="wheel_FL_1"];
+"case_link_R_1" [label="case_link_R_1"];
+"rocker_R_1" [label="rocker_R_1"];
+"bogie_R_1" [label="bogie_R_1"];
+"steering_fork_RR_1" [label="steering_fork_RR_1"];
+"wheel_RR_1" [label="wheel_RR_1"];
+"wheel_MR_1" [label="wheel_MR_1"];
+"steering_fork_FR_1" [label="steering_fork_FR_1"];
+"wheel_FR_1" [label="wheel_FR_1"];
+"zed2_camera_center" [label="zed2_camera_center"];
+"zed2_baro_link" [label="zed2_baro_link"];
+"zed2_left_camera_frame" [label="zed2_left_camera_frame"];
+"zed2_left_camera_optical_frame" [label="zed2_left_camera_optical_frame"];
+"zed2_temp_left_link" [label="zed2_temp_left_link"];
+"zed2_mag_link" [label="zed2_mag_link"];
+"zed2_right_camera_frame" [label="zed2_right_camera_frame"];
+"zed2_right_camera_optical_frame" [label="zed2_right_camera_optical_frame"];
+"zed2_temp_right_link" [label="zed2_temp_right_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_footprint" -> "base_joint" [label="xyz: 0 0 0.25 \nrpy: 0 -0 0"]
+"base_joint" -> "base_link"
+"base_link" -> "fixed_joint_L" [label="xyz: 0 0.275 0.15 \nrpy: 0 -0 0"]
+"fixed_joint_L" -> "case_link_L_1"
+"case_link_L_1" -> "rocker_joint_L" [label="xyz: 0 0.0215 -0.075 \nrpy: 0 -0 0"]
+"rocker_joint_L" -> "rocker_L_1"
+"rocker_L_1" -> "bogie_joint_L" [label="xyz: -0.211097 0.086631 -0.059825 \nrpy: 0 -0 0"]
+"bogie_joint_L" -> "bogie_L_1"
+"bogie_L_1" -> "steering_RL" [label="xyz: -0.292 0.0316 0.01 \nrpy: 0 -0 0"]
+"steering_RL" -> "steering_fork_RL_1"
+"steering_fork_RL_1" -> "wheel_joint_RL" [label="xyz: 0 0.059 -0.1895 \nrpy: 0 -0 0"]
+"wheel_joint_RL" -> "wheel_RL_1"
+"bogie_L_1" -> "wheel_joint_ML" [label="xyz: 0.211047 0.121437 -0.175838 \nrpy: 0 -0 0"]
+"wheel_joint_ML" -> "wheel_ML_1"
+"rocker_L_1" -> "steering_FL" [label="xyz: 0.496003 0.094 -0.045701 \nrpy: 0 -0 0"]
+"steering_FL" -> "steering_fork_FL_1"
+"steering_fork_FL_1" -> "wheel_joint_FL" [label="xyz: 0 0.059 -0.1895 \nrpy: 0 -0 0"]
+"wheel_joint_FL" -> "wheel_FL_1"
+"base_link" -> "fixed_joint_R" [label="xyz: 0 -0.275 0.15 \nrpy: 0 -0 0"]
+"fixed_joint_R" -> "case_link_R_1"
+"case_link_R_1" -> "rocker_joint_R" [label="xyz: 0 -0.0215 -0.075 \nrpy: 0 -0 0"]
+"rocker_joint_R" -> "rocker_R_1"
+"rocker_R_1" -> "bogie_joint_R" [label="xyz: -0.211097 -0.086631 -0.059825 \nrpy: 0 -0 0"]
+"bogie_joint_R" -> "bogie_R_1"
+"bogie_R_1" -> "steering_RR" [label="xyz: -0.292 -0.0316 0.01 \nrpy: 0 -0 0"]
+"steering_RR" -> "steering_fork_RR_1"
+"steering_fork_RR_1" -> "wheel_joint_RR" [label="xyz: 0 -0.059 -0.1895 \nrpy: 0 -0 0"]
+"wheel_joint_RR" -> "wheel_RR_1"
+"bogie_R_1" -> "wheel_joint_MR" [label="xyz: 0.211047 -0.121437 -0.175838 \nrpy: 0 -0 0"]
+"wheel_joint_MR" -> "wheel_MR_1"
+"rocker_R_1" -> "steering_FR" [label="xyz: 0.496003 -0.094 -0.045701 \nrpy: 0 -0 0"]
+"steering_FR" -> "steering_fork_FR_1"
+"steering_fork_FR_1" -> "wheel_joint_FR" [label="xyz: 0 -0.059 -0.1895 \nrpy: 0 -0 0"]
+"wheel_joint_FR" -> "wheel_FR_1"
+"base_link" -> "zed2_camera_center_joint" [label="xyz: 0.39 0 0.09 \nrpy: 0 -0 0"]
+"zed2_camera_center_joint" -> "zed2_camera_center"
+"zed2_camera_center" -> "zed2_baro_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"zed2_baro_joint" -> "zed2_baro_link"
+"zed2_camera_center" -> "zed2_left_camera_joint" [label="xyz: 0 0.06 0 \nrpy: 0 -0 0"]
+"zed2_left_camera_joint" -> "zed2_left_camera_frame"
+"zed2_left_camera_frame" -> "zed2_left_camera_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.5708 -0 -1.5708"]
+"zed2_left_camera_optical_joint" -> "zed2_left_camera_optical_frame"
+"zed2_left_camera_frame" -> "zed2_temp_left_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"zed2_temp_left_joint" -> "zed2_temp_left_link"
+"zed2_camera_center" -> "zed2_mag_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"zed2_mag_joint" -> "zed2_mag_link"
+"zed2_camera_center" -> "zed2_right_camera_joint" [label="xyz: 0 -0.06 0 \nrpy: 0 -0 0"]
+"zed2_right_camera_joint" -> "zed2_right_camera_frame"
+"zed2_right_camera_frame" -> "zed2_right_camera_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.5708 -0 -1.5708"]
+"zed2_right_camera_optical_joint" -> "zed2_right_camera_optical_frame"
+"zed2_right_camera_frame" -> "zed2_temp_right_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"zed2_temp_right_joint" -> "zed2_temp_right_link"
+}
