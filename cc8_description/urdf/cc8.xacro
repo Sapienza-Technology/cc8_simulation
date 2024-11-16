@@ -199,8 +199,8 @@
         <mesh filename="package://cc8_description/meshes/steering_fork_RL_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
-    <!--</visual>
-    <collision>
+    </visual>
+    <!--<collision>
       <origin xyz="0.503097 -0.414731 -0.025175" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/steering_fork_RL_1.stl" scale="0.001 0.001 0.001"/>
@@ -388,19 +388,20 @@
     </collision>
   </link>
 
+<!--ZED 2i Joint-->
   <joint name="zed2_camera_center_joint" type="fixed">
     <parent link="base_link"/>
     <child link="zed2_camera_center"/>
     <origin xyz="0.39 0 0.09" rpy="0 0 0"/>
   </joint>
 
-  <!--<xacro:if value="${footprint_link}">-->
-    <joint name="base_joint" type="fixed">
-      <origin xyz="0 0 0.25" rpy="0 0 0"/>
-      <parent link="base_footprint"/>
-      <child link="base_link"/>
-    </joint>
-  <!--</xacro:if>-->
+
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+
 
   <joint name="fixed_joint_L" type="fixed">
     <origin xyz="0.0 0.275 0.15" rpy="0 0 0"/>
