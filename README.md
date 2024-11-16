@@ -37,19 +37,18 @@ This directory contains all the meshes for the individual links and the stereo c
   Questo launch permette di aprire Rviz e visualizzare lo stato del rover, i topic che vengono visualizzati sono **robotModel** e **tf**.
   > **Note:** questo launch avvia il nodo robot_state_publisher che è lo stesso avviato da spawn_controller necessario per la simulazione in Gazebo. Se vengono utilizzati contemporaneamente cc8_gazebo.launch e cc8_display.launch si incorre in un errore poiché si tenta di lanciare contemporaneamente lo stesso nodo. Quindi se si vuole utilizzare questo launch per visualizzare lo stato del rover mentre si esegue la simulazione in gazebo bisogna commentare la parte di launch in cui viene caricato il nodo.
 #### `/config` Directory:
-Questo directory contiene `controller.yaml` in cui sono dichiarati i nomi e i parametri dei controller.
-- **joint_state_controller** è il controller responsabile di publicare lo stato dei diversi giunti.
-- **steering_{...}_position_controller** sono i quattro controller utilizzati per comandare separatamente i quattro sterzi.
-- **wheel_joint_{...}_position_controller** sono i sei controller utilizzati per comandare separatamente le sei ruote.
-  La struttura di questo file prevede che inizialmente venga indicato il NameSpace del robot in questo caso **cc8** (vedi questo è stato dichiarato in cc8.gazebo quando si utilizza il plugin di gazebo gazebo_ros_control) e successivamente un elenco con tutti i controller utilizzati.
-  Ognuno di questi è così definito:
-  ```yaml
-    {nome del controller (es. steering_FL_position_controller)}:
-      type: {inserire la tipologia di controller (es. effort_controllers/JointPositionController)}
-      joint: {nome del giunto come riportato nel file URDF (es. steering_FL)}
-      pid: {costanti del controllore PID}
-La tipologia di controllore permette di comandare in diversi modi in nostro giunto:
-![Gazebo PID Controller](figures/controller_PID.png)
+This directory contains `controller.yaml`, where the names and parameters of the controllers are defined.
+- **joint_state_controller**: The controller responsible for publishing the state of the various joints.
+- **steering_{...}_position_controller**: The four controllers used to independently control the four steering joints.
+- **wheel_joint_{...}_position_controller**: The six controllers used to independently control the six wheels.
+
+The structure of this file specifies the robot's namespace initially (in this case, **cc8**—this is declared in `cc8.gazebo` when using the `gazebo_ros_control` plugin). This is followed by a list of all the controllers used. Each controller is defined as follows:
+
+```yaml
+{controller_name (e.g., steering_FL_position_controller)}:
+  type: {controller type (e.g., effort_controllers/JointPositionController)}
+  joint: {joint name as specified in the URDF file (e.g., steering_FL)}
+  pid: {PID controller constants}
 
 
 
