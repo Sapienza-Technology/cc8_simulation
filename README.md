@@ -28,6 +28,8 @@ This directory contains all the meshes for the individual links and the stereo c
 #### `/launch` Directory:
 - #### Gazebo launch (`cc8_gazebo.launch`):
   ![Gazebo Launch Include Tree](figures/launch_gazebo.png)
-  Per poter avviare la simulazione (in pausa) del rover all'interno di Gazebo in un empty world è necessario utilizzare il launch `cc8_gazebo.launch`, questo include a sua  volta altri due launch. Il primo ad essere lanciato è `empty_world.launch` (questo non è presente in questo package ma in gazebo_ros) che andrà a caricare l'empty_world e successivamente il secondo `spawn_robot.launch` caricherà il modello del rover nel mondo appena creato.
-  `spawn_robot.launch` a sua volta include due launch: `spawn_model.launch` che procede a caricare il modello URDF costruito nel file `cc8.xacro` e `spawn_controllers.launch` responsabile del caricamento dei controller utilizzati per azionare i giunti dei quattro sterzi e delle sei ruote.  Oltre a questo `spawn_controllers.launch` carica nel server dei parametri di ros la tipologia di controller e le costanti dei rispettivi PID (kp, ki, kd), caricando il file `controllers.yaml` contenuto nella directory `/config`.  
+  To start the simulation (in a paused state) of the rover within Gazebo in an empty world, the `cc8_gazebo.launch` file must be used. This launch file, in turn, includes two other launch files. The first one launched is `empty_world.launch` (not included in this package but found in `gazebo_ros`), which loads the empty world. The second, `spawn_robot.launch`, loads the rover model into the newly created world.
+
+  `spawn_robot.launch` itself includes two launch files: `spawn_model.launch`, which loads the URDF model built from `cc8.xacro`, and `spawn_controllers.launch`, which is responsible for loading the controllers used to operate the four steering joints and the six wheels. Additionally, `spawn_controllers.launch` loads the type of controller and the respective PID constants (kp, ki, kd) into the ROS parameter server by reading the `controllers.yaml` file located in the `/config` directory.
+
 - #### Display launch (`cc8_display.launch`):
