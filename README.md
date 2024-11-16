@@ -34,8 +34,8 @@ This directory contains all the meshes for the individual links and the stereo c
   `spawn_controllers.launch` also starts the `robot_state_publisher` node, which uses the URDF specified by the `robot_description` parameter and joint positions from the `/cc8/joint_states` topic to calculate the robot's forward kinematics and publish the results via `tf` [(robot_state_publisher)](https://wiki.ros.org/robot_state_publisher).
 
 - #### Display launch (`cc8_display.launch`):
-  Questo launch permette di aprire Rviz e visualizzare lo stato del rover, i topic che vengono visualizzati sono **robotModel** e **tf**.
-  > **Note:** questo launch avvia il nodo robot_state_publisher che è lo stesso avviato da spawn_controller necessario per la simulazione in Gazebo. Se vengono utilizzati contemporaneamente cc8_gazebo.launch e cc8_display.launch si incorre in un errore poiché si tenta di lanciare contemporaneamente lo stesso nodo. Quindi se si vuole utilizzare questo launch per visualizzare lo stato del rover mentre si esegue la simulazione in gazebo bisogna commentare la parte di launch in cui viene caricato il nodo.
+  This launch file allows you to open Rviz and visualize the state of the rover through **RobotModel** and **TF**.
+  > **Note:** This launch starts the `robot_state_publisher` node, which is also started by `spawn_controller`, where it is necessary for the simulation in Gazebo. To avoid a conflict between the two nodes, if you want to monitor the state of the rover in Rviz, you can use `cc8_display_norsp.launch`, in which the `robot_state_publisher` node is not started.
 #### `/config` Directory:
 This directory contains `controller.yaml`, where the names and parameters of the controllers are defined.
 - **joint_state_controller**: The controller responsible for publishing the state of the various joints.
