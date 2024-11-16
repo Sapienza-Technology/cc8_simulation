@@ -28,4 +28,4 @@ This directory contains all the meshes for the individual links and the stereo c
 #### `/launch` Directory:
 - #### Gazebo launch (`cc8_gazebo.launch`):
   ![Gazebo Launch Include Tree](figures/launch_gazebo.png)
-- #### Display launch (`cc8_Display.launch`):
+- #### Display launch (`cc8_display.launch`):
