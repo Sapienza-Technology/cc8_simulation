@@ -26,12 +26,12 @@
       </geometry>
       <material name="silver"/>
     </visual>
-    <collision>
+    <!--<collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="case_link_L_1">
@@ -47,12 +47,12 @@
       </geometry>
       <material name="silver"/>
     </visual>
-    <collision>
+    <!--<collision>
       <origin xyz="-0.0 -0.275 -0.15" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/case_link_L_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="case_link_R_1">
@@ -68,12 +68,12 @@
       </geometry>
       <material name="silver"/>
     </visual>
-    <collision>
+    <!--<collision>
       <origin xyz="0.0 0.275 -0.15" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/case_link_R_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="rocker_L_1">
@@ -89,12 +89,12 @@
       </geometry>
       <material name="silver"/>
     </visual>
-    <collision>
+    <!--<collision>
       <origin xyz="-0.0 -0.2965 -0.075" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/rocker_L_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="steering_fork_FL_1">
@@ -110,12 +110,12 @@
       </geometry>
       <material name="silver"/>
     </visual>
-    <collision>
+    <!--<collision>
       <origin xyz="-0.496003 -0.3905 -0.029299" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/steering_fork_FL_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="wheel_FL_1">
@@ -155,12 +155,12 @@
       </geometry>
       <material name="silver"/>
     </visual>
-    <collision>
+    <!--<collision>
       <origin xyz="0.211097 -0.383131 -0.015175" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/bogie_L_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="wheel_ML_1">
@@ -199,13 +199,13 @@
         <mesh filename="package://cc8_description/meshes/steering_fork_RL_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
-    </visual>
+    <!--</visual>
     <collision>
       <origin xyz="0.503097 -0.414731 -0.025175" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/steering_fork_RL_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="wheel_RL_1">
@@ -245,12 +245,12 @@
       </geometry>
       <material name="silver"/>
     </visual>
-    <collision>
+    <!--<collision>
       <origin xyz="0.0 0.2965 -0.075" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/rocker_R_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="steering_fork_FR_1">
@@ -266,12 +266,12 @@
       </geometry>
       <material name="silver"/>
     </visual>
-    <collision>
+    <!--<collision>
       <origin xyz="-0.496003 0.3905 -0.029299" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/steering_fork_FR_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="wheel_FR_1">
@@ -311,12 +311,12 @@
       </geometry>
       <material name="silver"/>
     </visual>
-    <collision>
+    <!--<collision>
       <origin xyz="0.211097 0.383131 -0.015175" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/bogie_R_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="wheel_MR_1">
@@ -356,12 +356,12 @@
       </geometry>
       <material name="silver"/>
     </visual>
-    <collision>
+    <!--<collision>
       <origin xyz="0.503097 0.414731 -0.025175" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://cc8_description/meshes/steering_fork_RR_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision>
+    </collision>-->
   </link>
 
   <link name="wheel_RR_1">
