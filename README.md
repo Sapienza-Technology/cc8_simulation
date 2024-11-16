@@ -42,14 +42,32 @@ This directory contains `controller.yaml`, where the names and parameters of the
 - **steering_{...}_position_controller**: The four controllers used to independently control the four steering joints.
 - **wheel_joint_{...}_position_controller**: The six controllers used to independently control the six wheels.
 
-The structure of this file specifies the robot's namespace initially (in this case, **cc8**—this is declared in `cc8.gazebo` when using the `gazebo_ros_control` plugin). This is followed by a list of all the controllers used. Each controller is defined as follows:
+The structure of this file specifies the robot's namespace initially (in this case, **cc8**, this is declared in `cc8.gazebo` when using the `gazebo_ros_control` plugin). This is followed by a list of all the controllers used. Each controller is defined as follows:
 
 ```yaml
 {controller_name (e.g., steering_FL_position_controller)}:
   type: {controller type (e.g., effort_controllers/JointPositionController)}
   joint: {joint name as specified in the URDF file (e.g., steering_FL)}
   pid: {PID controller constants}
+```
+There are different types of controllers that can receive an input, which may be a position, velocity, or torque. Based on this input, the controller determines the error, calculated as the difference between the input (the reference) and the current state of the joint. The output of the controller can be a position, velocity, or torque, which is then used as input for the simulation. An example of a control scheme is shown in the figure below.
 
+![PID_Controller_Scheme](figures/controller_PID.png)
+
+In questo caso di esempio la tipologia di giunto è la seguente:
+
+`effort_controllers/JointPositionController`
+
+- `effort_controller` indica che l'output del controllre PID è una coppia che sarà quella effettivamente comandata al giunto in simulazione.
+- `JointPositionController` Indica che l'errore viene determinato come differenza di posizione tra quella di referimento pubblicata sul topic e l'effettiva posizione rappresentata dallo stato del giunto.
+
+In generale potrei avere altre tipologie di schemi di controllo come ad esempio: 
+
+- `effort_controllers/JointEffortController`
+- `effort_controllers/JointVelocityController`
+- `velocity_controllers/JointVelocityController`
+- `velocity_controllers/JointPositionController`
+- ecc...
 
 
 
