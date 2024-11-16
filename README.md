@@ -39,7 +39,17 @@ This directory contains all the meshes for the individual links and the stereo c
 #### `/config` Directory:
 Questo directory contiene `controller.yaml` in cui sono dichiarati i nomi e i parametri dei controller.
 - **joint_state_controller** è il controller responsabile di publicare lo stato dei diversi giunti.
-- **steering_()_position_controller** sono i quattro controller utilizzati per comandare separatamente i quattro sterzi.
-- **wheel_joint_()_position_controller** sono i sei controller utilizzati per comandare separatamente le sei ruote.
+- **steering_{...}_position_controller** sono i quattro controller utilizzati per comandare separatamente i quattro sterzi.
+- **wheel_joint_{...}_position_controller** sono i sei controller utilizzati per comandare separatamente le sei ruote.
+  La struttura di questo file prevede che inizialmente venga indicato il NameSpace del robot in questo caso **cc8** (vedi questo è stato dichiarato in cc8.gazebo quando si utilizza il plugin di gazebo gazebo_ros_control) e successivamente un elenco con tutti i controller utilizzati.
+  Ognuno di questi è così definito:
+  ```yaml
+    {nome del controller (es. steering_FL_position_controller)}:
+      type: {inserire la tipologia di controller (es. effort_controllers/JointPositionController)}
+      joint: {nome del giunto come riportato nel file URDF (es. steering_FL)}
+      pid: {costanti del controllore PID}
+La tipologia di controllore permette di comandare in diversi modi in nostro giunto:
+
+
 
   
