@@ -54,20 +54,21 @@ There are different types of controllers that can receive an input, which may be
 
 ![PID_Controller_Scheme](figures/controller_PID.png)
 
-In questo caso di esempio la tipologia di giunto è la seguente:
+In this example, the type of joint controller used is:
 
 `effort_controllers/JointPositionController`
 
-- `effort_controller` indica che l'output del controllre PID è una coppia che sarà quella effettivamente comandata al giunto in simulazione.
-- `JointPositionController` Indica che l'errore viene determinato come differenza di posizione tra quella di referimento pubblicata sul topic e l'effettiva posizione rappresentata dallo stato del giunto.
+- `effort_controller` indicates that the output of the PID controller is a torque, which is the actual command sent to the joint in the simulation.
+- `JointPositionController` indicates that the error is calculated as the positional difference between the reference position published on the topic and the actual position represented by the joint state.
 
-In generale potrei avere altre tipologie di schemi di controllo come ad esempio: 
+In general, other types of control schemes can be used, such as:
 
 - `effort_controllers/JointEffortController`
 - `effort_controllers/JointVelocityController`
 - `velocity_controllers/JointVelocityController`
 - `velocity_controllers/JointPositionController`
-- ecc...
+- etc...
+
 
 
 
