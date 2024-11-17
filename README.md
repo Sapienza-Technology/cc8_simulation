@@ -69,6 +69,17 @@ In general, other types of control schemes can be used, such as:
 - `velocity_controllers/JointPositionController`
 - etc...
 
+The type of controller chosen must be consistent with what is declared in `cc8.trans`. The type of `HardwareInterface` must match the type of controller. For example, if we have a controller type that sends torque as input to the joint (as in the previous example), then within the **transmission** element, the `hardwareInterface` should be specified as follows:
+
+```xml
+<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+```
+
+# TODO
+- Scegliere i controller corretti per poter comandare una posizione agli sterzi e una velocità alle ruote.
+- Tuning delle costanti dei divesri PID.
+- Ogni giunto ha un topic su cui è possibile pubblicare un comando, quindi è necessario realizzare un nodo che permetta di pubblicare su ognuno di essi la posizione nel caso degli sterzi e la velocità nel caso delle ruote. (si può partire da `firmware_CC8.py`).
+- Bisogna creare un world con il Mars Yard 2024.
 
 
 
