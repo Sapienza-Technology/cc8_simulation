@@ -1,6 +1,9 @@
 # cc8_Simulation
 This repository contains the package with the robot description of CC8 Rover (Version: 2022-2023).
 
+This package enables the integration of a rover model into an empty world simulated in Gazebo and configures the necessary controllers for joint movement. It is designed to be compatible with ROS1 and Gazebo version 11.11.
+
+The robot description (URDF) was generated using a [Fusion 360 addon](https://github.com/syuntoku14/fusion2urdf). This tool exports a URDF model with accurate inertial and visual parameters directly derived from the original CAD design, ensuring fidelity. Additionally, the package configures specific controllers for each joint, enabling a complete and realistic simulation.
 ## URDF Structure
 The robot is described using a URDF file (/urdf/cc8.xacro) written in a macro language called xacro in which all links and joints are defined with their parent-child relationships.
 ### CC8 Model
@@ -76,10 +79,10 @@ The type of controller chosen must be consistent with what is declared in `cc8.t
 ```
 
 # TODO
-- Scegliere i controller corretti per poter comandare una posizione agli sterzi e una velocità alle ruote.
-- Tuning delle costanti dei divesri PID.
-- Ogni giunto ha un topic su cui è possibile pubblicare un comando, quindi è necessario realizzare un nodo che permetta di pubblicare su ognuno di essi la posizione nel caso degli sterzi e la velocità nel caso delle ruote. (si può partire da `firmware_CC8.py`).
-- Bisogna creare un world con il Mars Yard 2024.
+- Select the appropriate controllers to enable position control for the steering joints and velocity control for the wheels.
+- Perform PID tuning to optimize the parameters for each control loop.
+- Since each joint has a dedicated topic for command publication, a ROS node must be developed to manage the publication of commands. This node should handle position commands for the steering joints and velocity commands for the wheels. Development can be based on the existing firmware_CC8.py.
+- Create a simulation world representing the Mars Yard 2024 environment.
 
 
 
